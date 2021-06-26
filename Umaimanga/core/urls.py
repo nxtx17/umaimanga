@@ -10,5 +10,4 @@ urlpatterns = [
     path('editar-manga/<pk>', editar_Manga, name="editarManga"),
     path('eliminar-manga/<pk>', delete_Manga, name="deleteManga")
    
-
 ]
