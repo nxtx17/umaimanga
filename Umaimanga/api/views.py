@@ -5,12 +5,16 @@ from .serializers import MangaSerializer
 from core.models import Manga
 from rest_framework.parsers import JSONParser
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+
 
 
 
 
 @api_view(['GET', 'POST'])
+@permission_classes((IsAuthenticated,))
 def apiManga(request):
     if request.method == 'GET':
         """
@@ -33,6 +37,7 @@ def apiManga(request):
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes((IsAuthenticated,))
 def detalle_manga(request, pk):
     try:
         manga = Manga.objects.get(Nombre=pk)
