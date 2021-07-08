@@ -1,9 +1,10 @@
 from django.urls import path
 
-from .views import apiManga
+from .views import apiManga, detalle_manga
 
 
 
 urlpatterns = [
-    path('mangas/', apiManga, name="api_manga"),
+    path('manga/', apiManga, name="api_manga"),
+    path('manga/<pk>',detalle_manga,name="detalleManga" )
 ]
